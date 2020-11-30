@@ -11,6 +11,6 @@ def discounted(price, discount, max_discount=20):
          return price - (price * discount / 100)
     except (TypeError,ValueError):
       print("Приведение типов не сработало")
+        
      
-a=discounted('string',10,200)
-print(a)
+discounted('сто',"десять")

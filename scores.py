@@ -21,4 +21,4 @@ scores_sum = 0
 for score in students_scores:
   scores_sum += (sum(score['scores']))/(len(score['scores']))
 
-print (f"Средний балл по школе:{scores_sum/4}")
+print (f"Средний балл по школе:{scores_sum/len(students_scores)}")

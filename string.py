@@ -2,7 +2,7 @@
 
 def string_qualifier(a,b):
 
-  if (type(a and b)==str):
+  if type(a)==str and type(b)==str:
      if a==b:
         print(1)
      elif (a != b and (b=='learn')):
@@ -17,4 +17,4 @@ def string_qualifier(a,b):
 a='helloooooooooooooooo'
 b=0
 
-string_qualifier(a, b)
+string_qualifier(1, '1')

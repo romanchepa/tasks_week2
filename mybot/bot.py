@@ -2,6 +2,9 @@ import logging
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import settings
 import ephem
+import datetime
+
+
 
 logging.basicConfig(filename="bot.log", level=logging.INFO)
 
@@ -11,12 +14,28 @@ def greet_user(update, context):
     update.message.reply_text("Приветствую, пользователь!")
 
 def talk_to_me(update, context):
+
     text = update.message.text
-    if text == 'planet Mars':
-        mars = ephem.Mars('2020/11/26')
-        const = ephem.constellation(mars)
-        print(const)
-        update.message.reply_text(const)
+    planet_name = text.split()[-1]
+
+    if planet_name == 'Mars':
+       mars= ephem.Mars()
+       mars.compute(ephem.Date(datetime.date.today()))
+       result = ephem.constellation(mars)
+       update.message.reply_text(result)
+    
+    if planet_name == 'Jupiter':
+        jupiter = ephem.Jupiter()
+        jupiter.compute(ephem.Date(datetime.date.today()))
+        result = ephem.constellation(jupiter)
+        update.message.reply_text(result)
+    
+    if planet_name == 'Mercury':
+        mercury = ephem.Mercury()
+        mercury.compute(ephem.Date(datetime.date.today()))
+        result = ephem.constellation(mercury)
+        update.message.reply_text(result)    
+    
     else:
       print(text)
       update.message.reply_text(text)
